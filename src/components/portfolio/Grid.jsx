@@ -2,18 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Container } from '../generic/Container';
+import { Tile } from './Tile';
 
 const Wrapper = styled.div`
 	display: flex;
 	flex-wrap: wrap;
-`;
-
-const Tile = styled.div`
-  flex: 0 0 50%;
-	background-image: url('${({ image }) => image && image}');
-	background-size: cover;
-	background-position: center;
-	height: 600px;
 `;
 
 export const Portfolio = () => {
