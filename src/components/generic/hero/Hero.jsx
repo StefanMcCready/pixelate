@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Container } from './Container';
+import { Container, Button, Content as Prismic } from '../../';
+import { selectHero } from './selector';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -36,30 +37,28 @@ const Description = styled.h3`
 	margin-bottom: 35px;
 `
 
-const Button = styled.a`
-	border: 3px solid #fff;
-	background: none;
-	font-size: 26px;
-	padding: 10px;
-	transition: all 0.2s;
+export const Hero = () => (
+	<Prismic type="livery">
+		{({ content }) => {
+			if (!content) {
+				return null;
+			}
 
-	&:hover {
-		background: #fff;
-		color: #000;
-		cursor: pointer;
-	}
-`
+			const { heading, description, media } = selectHero(content);
 
-export const Hero = ({ image }) => (
-	<Wrapper image={image}>
-		<Fade>
-			<Content>
-				<Container>
-					<Heading>Brewdog - Xfinity Mustang 2019</Heading>
-					<Description>Checkout our new finctional livery featuring Brewdog branding. The colours have been inspired by the ever popular Elvis Juice Beer.</Description>
-					<Button>View Livery</Button>
-				</Container>
-			</Content>
-		</Fade>
-	</Wrapper>
+			return (
+				<Wrapper image={media}>
+					<Fade>
+						<Content>
+							<Container>
+								<Heading>{heading}</Heading>
+								<Description>{description}</Description>
+								<Button element="a">View Livery</Button>
+							</Container>
+						</Content>
+					</Fade>
+				</Wrapper>
+			)
+		}}
+	</Prismic>
 )
