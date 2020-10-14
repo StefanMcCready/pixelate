@@ -4,7 +4,6 @@ export const selectHero = (content) => {
 	if (content) {
 		const sortedLiveryPosts = content.results.sort((a, b) => new Date(b.first_publication_date) - new Date(a.first_publication_date));
 		const hero = sortedLiveryPosts[0].data;
-		console.log({ hero });
 
 		heroContent = {
 			heading: hero.name[0].text,

@@ -30,21 +30,14 @@ const Content = styled.div`
 
 const Title = styled.h2`
 	font-size: 36px;
-	margin-bottom: 10px;
+	margin-bottom: 30px;
 `;
 
-const Description = styled.h3`
-	font-size: 28px;
-	margin-top: 0;
-	margin-bottom: 35px;
-`;
-
-export const Tile = ({ title, description, image }) => (
-	<Wrapper image={image}>
+export const Tile = ({ heading, description, media }) => (
+	<Wrapper image={media}>
 		<Fade>
 			<Content>
-				<Title>Hello there</Title>
-				<Description>Whale hello there. This is another nice livery</Description>
+				<Title>{heading}</Title>
 				<Button element="a">View Livery</Button>
 			</Content>
 		</Fade>
